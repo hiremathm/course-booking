@@ -1,0 +1,33 @@
+<div class = "col-md-4">
+  <div class= "page-header">
+    <h2><span class="glyphicon glyphicon-th"></span>Edit Course</h2>
+  </div>
+    <%= form_for(@course) do |f| %>
+  <% if @course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% @course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class= "form-group">
+    <%= f.label :name %> : 
+    <%= f.text_field :name ,placeholder: "Enter Course Name",class: "form-control"%>
+  </div><br>
+  <div class= "form-group">
+    <%= f.label :section_id %> :
+    <%= f.collection_select :section_id, Section.all, :id, :header,{ prompt: "Select Section" },{class: "form-control"}  %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= f.submit "ADD COURSE", class: "btn btn-primary" %> - 
+	<%= link_to 'BACK', courses_path, class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+</div>

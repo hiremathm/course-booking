@@ -1,0 +1,31 @@
+<div class="col-md-6">
+<div class= "page-header"><h2><span class="glyphicon glyphicon-th"></span>Listing Bookings</h2></div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Course</th>
+      <th>User</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.time %></td>
+        <td><%= booking.course.name %></td>
+        <td><%= booking.user.email %></td>
+        <td><%= link_to edit_booking_path(booking) do %>
+                <i class = "glyphicon glyphicon-pencil"></i>
+              <% end %>
+          
+            <%= link_to booking, method: :delete, data: { confirm: 'Are you sure?' } do  %>
+                <i class = "glyphicon glyphicon-trash"></i>
+              <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

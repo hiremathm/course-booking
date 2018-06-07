@@ -1,0 +1,29 @@
+<h1>Editing Booking</h1>
+<div class = "col-md-4">
+<div class = "page-header"><h2><span class="glyphicon glyphicon-th"></span>Book Course</h2></div>
+  <%= form_for(@booking) do |f| %>
+    <% if @booking.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+        <ul>
+        <% @booking.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class= "form-group">
+      <%= f.label :course_id %> : 
+      <%= f.collection_select :course_id, Course.all, :id, :name,{ prompt: "Select Course" },{class: "form-control"} %>
+    </div>
+    <br>
+    <div class= "form-group">
+      <%= f.label :time %> :(Slots: 7am, 7pm, 9am, 9pm) <br>
+      <%= f.time_select :time ,{class: "form-control"}%>
+    </div>
+    <br>
+    <div><%= f.submit "BOOK", class: "btn btn-primary" %> - <%= link_to 'BACK', bookings_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

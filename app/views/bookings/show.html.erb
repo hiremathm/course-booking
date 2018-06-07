@@ -1,0 +1,17 @@
+<p>
+  <strong>Time:</strong>
+  <%= @booking.time%>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @booking.course.name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @booking.user.email %>
+</p>
+
+
+<%= link_to 'EDIT', edit_booking_path(@booking), class:"btn btn-primary" %> - <%= link_to 'BACK', bookings_path, class:"btn btn-primary" %>

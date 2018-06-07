@@ -1,0 +1,11 @@
+<p>
+  <strong>Name:</strong>
+  <%= @course.name %>
+</p>
+
+<p>
+  <strong>Section:</strong>
+  <%= @course.section_id %>
+</p>
+
+<%= link_to 'EDIT', edit_course_path(@course), class:"btn btn-primary"%> - <%= link_to 'BACK', courses_path, class:"btn btn-primary" %>
